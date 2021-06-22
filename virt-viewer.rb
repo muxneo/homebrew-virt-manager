@@ -24,15 +24,12 @@ class VirtViewer < Formula
   depends_on "spice-protocol"
 
   def install
-    args = %W[
-      --disable-silent-rules
-      --disable-update-mimedb
-      --with-gtk-vnc
-      --with-spice-gtk
-      --prefix=#{prefix}
-    ]
-    system "./configure", *args
-    system "make", "install"
+    system "git init"
+    system "git add ."
+    system "git commit -m 'test'"
+    system "sed -i '/git_werror/d' meson_options.txt"
+    system "PATH=$PATH:/usr/local/bin ./prepare-release.sh"
+    system "ninja -C build/native"
   end
 
   def post_install
