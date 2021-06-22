@@ -27,7 +27,7 @@ class VirtViewer < Formula
     system "git init"
     system "git add ."
     system "git commit -m 'test'"
-    system "sed -i '/git_werror/d' meson_options.txt"
+    system "sed -i '' -e '/git_werror/d' meson_options.txt"
     system "PATH=$PATH:/usr/local/bin ./prepare-release.sh"
     system "ninja -C build/native"
   end
