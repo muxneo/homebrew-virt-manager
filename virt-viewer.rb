@@ -29,7 +29,7 @@ class VirtViewer < Formula
     system "git commit -m 'test'"
     system "sed -i '' -e '/git_werror/s/auto/disabled/g' meson_options.txt"
     system "PATH=$PATH:/usr/local/bin ./prepare-release.sh"
-    system "ninja -C build/native"
+    system "PATH=$PATH:/usr/local/bin ninja -C build/native"
   end
 
   def post_install
